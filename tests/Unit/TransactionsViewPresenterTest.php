@@ -1,5 +1,5 @@
 <?php
-namespace unit;
+namespace Unit;
 
 use Cushon\AccountFundTransaction;
 use Cushon\Fund;

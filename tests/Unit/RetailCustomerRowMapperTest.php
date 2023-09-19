@@ -1,5 +1,5 @@
 <?php
-namespace unit;
+namespace Unit;
 
 use Cushon\Dao\RowMapper\RetailCustomerRowMapper;
 use Cushon\RetailCustomer;

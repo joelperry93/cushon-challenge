@@ -1,5 +1,5 @@
 <?php
-namespace unit;
+namespace Unit;
 
 use Cushon\RetailCustomer;
 use Cushon\View\RetailCustomerViewPresenter;
