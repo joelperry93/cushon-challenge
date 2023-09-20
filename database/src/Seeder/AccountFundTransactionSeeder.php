@@ -22,7 +22,7 @@ final class AccountFundTransactionSeeder extends AbstractSeed {
             [
                 'account_fund_id' => 1,
                 'amount_gbp'      => Money::GBP(10_000)->getAmount(),
-                'time'            => $this->clock->now()->format(DateTimeInterface::ATOM)
+                'time'            => '2023-06-01T19:00:00'
             ]
         );
         $this->insert(
@@ -30,16 +30,15 @@ final class AccountFundTransactionSeeder extends AbstractSeed {
             [
                 'account_fund_id' => 1,
                 'amount_gbp'      => Money::GBP(15_000)->getAmount(),
-                'time'            => $this->clock->now()->format(DateTimeInterface::ATOM)
+                'time'            => '2023-06-02T19:00:00'
             ]
         );
-
         $this->insert(
             'account_fund_transaction',
             [
                 'account_fund_id' => 2,
                 'amount_gbp'      => Money::GBP(4_000)->getAmount(),
-                'time'            => $this->clock->now()->format(DateTimeInterface::ATOM)
+                'time'            => '2023-06-02T19:00:00'
             ]
         );
     }

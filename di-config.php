@@ -5,17 +5,20 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Psr\Container\ContainerInterface;
 use Psr\Clock\ClockInterface;
+use Cushon\RequestHandler\AccountBalanceRequestHandler;
 
 return [
     App::class => function (ContainerInterface $container): App {
         AppFactory::setContainer($container);
-        return AppFactory::create();
+        $app = AppFactory::create();
+        $app->get('/account-summary', AccountBalanceRequestHandler::class);
+        return $app;
     },
 
     ClockInterface::class => function (ContainerInterface $container): ClockInterface {
         return new class implements ClockInterface {
             public function now(): DateTimeImmutable { // A frozen clock makes testing reliable
-                return new \DateTimeImmutable('2023-06-01T16:00:00');
+                return new \DateTimeImmutable('2023-06-02T20:00:00');
             }
         };
     },

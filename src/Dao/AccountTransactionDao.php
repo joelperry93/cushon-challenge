@@ -4,6 +4,7 @@ namespace Cushon\Dao;
 use Cushon\AccountFundTransaction;
 use Cushon\Dao\RowMapper\AccountFundTransactionRowMapper;
 use Doctrine\DBAL\Connection;
+use Psr\Clock\ClockInterface;
 
 /**
  * Database operations relating to account transactions

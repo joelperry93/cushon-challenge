@@ -9,7 +9,8 @@
         "codeception/codeception": "^5.0",
         "codeception/module-phpbrowser": "*",
         "codeception/module-asserts": "*",
-        "codeception/module-rest": "^3.3"
+        "codeception/module-rest": "^3.3",
+        "mockery/mockery": "^1.6"
     },
     "require": {
         "php": ">=8.2",

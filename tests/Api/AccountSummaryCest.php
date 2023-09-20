@@ -3,26 +3,30 @@ namespace Tests\Acceptance;
 
 use Tests\Support\ApiTester;
 
-final readonly class AccountBalanceCest {
+final readonly class AccountSummaryCest {
 
     public function testFirstAccount(ApiTester $I): void {
-        $I->sendGet('/', ['account-id' => 1]);
+        $I->sendGet('/account-summary', ['account-id' => 1]);
         $I->seeResponseCodeIs(200);
         $I->seeResponseEquals(
             json_encode([
-                'owner' => [
+                'holder' => [
                     'name' => 'John T',
                     'email' => 'johnt@example.com'
                 ],
-                'totals' => [
+                'fund_totals' => [
                     'CUSHON_EQUITIES' => [
                         'amount' => '25000',
                         'currency' => 'GBP'
                     ]
                 ],
+                'interest' => [
+                    'amount' => '602',
+                    'currency' => 'GBP'
+                ],
                 'transactions' => [
                     [
-                        'time' => '2023-06-01T16:00:00+00:00',
+                        'time' => '2023-06-01T19:00:00+00:00',
                         'fund' => 'CUSHON_EQUITIES',
                         'money' => [
                             'amount' => '10000',
@@ -30,7 +34,7 @@ final readonly class AccountBalanceCest {
                         ]
                     ],
                     [
-                        'time' => '2023-06-01T16:00:00+00:00',
+                        'time' => '2023-06-02T19:00:00+00:00',
                         'fund' => 'CUSHON_EQUITIES',
                         'money' => [
                             'amount' => '15000',
@@ -43,23 +47,27 @@ final readonly class AccountBalanceCest {
     }
 
     public function testSecondAccount(ApiTester $I): void {
-        $I->sendGet('/', ['account-id' => 2]);
+        $I->sendGet('/account-summary', ['account-id' => 2]);
         $I->seeResponseCodeIs(200);
         $I->seeResponseEquals(
             json_encode([
-                'owner' => [
+                'holder' => [
                     'name' => 'Jill P',
                     'email' => 'jillp@example.com'
                 ],
-                'totals' => [
+                'fund_totals' => [
                     'CUSHON_EQUITIES' => [
                         'amount' => '4000',
                         'currency' => 'GBP'
                     ]
                 ],
+                'interest' => [
+                    'amount' => '80',
+                    'currency' => 'GBP'
+                ],
                 'transactions' => [
                     [
-                        'time' => '2023-06-01T16:00:00+00:00',
+                        'time' => '2023-06-02T19:00:00+00:00',
                         'fund' => 'CUSHON_EQUITIES',
                         'money' => [
                             'amount' => '4000',

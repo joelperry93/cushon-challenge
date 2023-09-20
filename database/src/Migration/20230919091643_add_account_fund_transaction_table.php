@@ -32,6 +32,6 @@ final class AddAccountFundTransactionTable extends AbstractMigration {
     }
 
     public function down(): void {
-        $this->table('account_fund')->drop()->save();
+        $this->table('account_fund_transaction')->drop()->save();
     }
 }

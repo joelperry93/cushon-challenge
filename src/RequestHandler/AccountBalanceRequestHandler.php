@@ -4,6 +4,7 @@ namespace Cushon\RequestHandler;
 use Cushon\Dao\AccountDao;
 use Cushon\Dao\AccountTransactionDao;
 use Cushon\FundSummaryBuilder;
+use Cushon\InterestRateCalculator;
 use Cushon\View\RetailCustomerViewPresenter;
 use Cushon\View\TransactionsViewPresenter;
 use Laminas\Diactoros\Response\JsonResponse;
@@ -22,7 +23,8 @@ final readonly class AccountBalanceRequestHandler implements RequestHandlerInter
         private AccountTransactionDao $accountTransactionDao,
         private FundSummaryBuilder $fundSummaryBuilder,
         private AccountDao $accountDao,
-        private RetailCustomerViewPresenter $customerViewPresenter
+        private RetailCustomerViewPresenter $customerViewPresenter,
+        private InterestRateCalculator $interestRateCalculator
     ) {}
 
     public function handle(ServerRequestInterface $request): ResponseInterface {
@@ -30,8 +32,9 @@ final readonly class AccountBalanceRequestHandler implements RequestHandlerInter
         $transactions = $this->accountTransactionDao->getAccountTransactions($accountId);
 
         return new JsonResponse([
-            'owner'        => $this->customerViewPresenter->present($this->accountDao->getAccountOwner($accountId)),
-            'totals'       => $this->fundSummaryBuilder->buildSummary($transactions),
+            'holder'       => $this->customerViewPresenter->present($this->accountDao->getAccountOwner($accountId)),
+            'fund_totals'  => $this->fundSummaryBuilder->buildSummary($transactions),
+            'interest'     => $this->interestRateCalculator->calculateInterest($transactions),
             'transactions' => $this->transactionsViewPresenter->present($transactions)
         ]);
     }
