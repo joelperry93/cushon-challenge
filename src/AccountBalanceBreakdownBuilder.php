@@ -1,6 +1,8 @@
 <?php
 namespace Cushon;
 
+use Money\Money;
+
 /**
  * Given a set of transactions, build a breakdown by fund of the amount deposited, the interest gained, and
  * the total balance by adding those two values
@@ -12,6 +14,10 @@ final readonly class AccountBalanceBreakdownBuilder {
         private InterestRateCalculator $interestRateCalculator
     ) {}
 
+    /**
+     * @param AccountFundTransaction[] $transactions
+     * @return Money[][]
+     */
     public function buildAccountBalanceBreakdown(array $transactions): array {
         $breakdown = [];
 

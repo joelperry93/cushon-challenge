@@ -4,7 +4,7 @@ namespace Cushon;
 use Money\Money;
 
 /**
- * Builds a summary of how much money is currently in each fund, given a list of transactions.
+ * Calculates how much money has been deposited in each fund, given a list of transactions.
  */
 final readonly class FundDepositTotalCalculator {
 
