@@ -17,10 +17,10 @@ return [
     'container' => $container,
     'paths' => [
         'migrations' => [
-            'Cushon\Database\Migration' => '%%PHINX_CONFIG_DIR%%/database/src/Migration'
+            'Cushon\Database\Migration' => '%%PHINX_CONFIG_DIR%%/database/Migration'
         ],
         'seeds' => [
-            'Cushon\Database\Seeder' => '%%PHINX_CONFIG_DIR%%/database/src/Seeder'
+            'Cushon\Database\Seeder' => '%%PHINX_CONFIG_DIR%%/database/Seeder'
         ]
     ]
 ];
