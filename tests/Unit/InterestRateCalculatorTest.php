@@ -28,7 +28,7 @@ final class InterestRateCalculatorTest extends TestCase {
         );
 
         $this->assertEquals(
-            expected: Money::GBP('14'), // ((100*1.01+100)*1.02+100)*1.03 = 314.1706
+            expected: [Fund::CUSHON_EQUITIES->value => Money::GBP('14')], // ((100*1.01+100)*1.02+100)*1.03 = 314.1706
             actual: $interestRateCalculator->calculateInterest(
                 transactions: [
                     new AccountFundTransaction(Fund::CUSHON_EQUITIES, Money::GBP(100), new \DateTime('2023-06-01')),
@@ -56,7 +56,7 @@ final class InterestRateCalculatorTest extends TestCase {
         );
 
         $this->assertEquals(
-            expected: Money::GBP('0'),
+            expected: [],
             actual: $interestRateCalculator->calculateInterest([])
         );
     }

@@ -3,20 +3,20 @@ namespace Unit;
 
 use Cushon\AccountFundTransaction;
 use Cushon\Fund;
-use Cushon\FundSummaryBuilder;
+use Cushon\FundDepositTotalCalculator;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
-final class FundSummaryBuilderTest extends TestCase {
+final class FundDepositTotalCalculatorTest extends TestCase {
 
     public function testNonZeroSummary(): void {
-        $builder = new FundSummaryBuilder();
+        $builder = new FundDepositTotalCalculator();
 
         $this->assertEquals(
             expected: [
                 Fund::CUSHON_EQUITIES->value => Money::GBP(40)
             ],
-            actual: $builder->buildSummary([
+            actual: $builder->calculateFundDepositTotals([
                 new AccountFundTransaction(
                     Fund::CUSHON_EQUITIES,
                     Money::GBP(10),
@@ -42,7 +42,7 @@ final class FundSummaryBuilderTest extends TestCase {
     }
 
     public function testZeroSummary(): void {
-        $builder = new FundSummaryBuilder();
-        $this->assertEquals(expected: [], actual: $builder->buildSummary([]));
+        $builder = new FundDepositTotalCalculator();
+        $this->assertEquals(expected: [], actual: $builder->calculateFundDepositTotals([]));
     }
 }

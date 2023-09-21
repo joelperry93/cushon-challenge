@@ -1,10 +1,9 @@
 <?php
 namespace Cushon\RequestHandler;
 
+use Cushon\AccountBalanceBreakdownBuilder;
 use Cushon\Dao\AccountDao;
 use Cushon\Dao\AccountTransactionDao;
-use Cushon\FundSummaryBuilder;
-use Cushon\InterestRateCalculator;
 use Cushon\View\RetailCustomerViewPresenter;
 use Cushon\View\TransactionsViewPresenter;
 use Laminas\Diactoros\Response\JsonResponse;
@@ -16,15 +15,14 @@ use Psr\Http\Server\RequestHandlerInterface;
  * JSON endpoint that gives an overview of an account, including the owner of the account, totals for each fund,
  * and account transactions.
  */
-final readonly class AccountBalanceRequestHandler implements RequestHandlerInterface {
+final readonly class AccountSummaryRequestHandler implements RequestHandlerInterface {
 
     public function __construct(
         private TransactionsViewPresenter $transactionsViewPresenter,
         private AccountTransactionDao $accountTransactionDao,
-        private FundSummaryBuilder $fundSummaryBuilder,
         private AccountDao $accountDao,
         private RetailCustomerViewPresenter $customerViewPresenter,
-        private InterestRateCalculator $interestRateCalculator
+        private AccountBalanceBreakdownBuilder $accountBalanceBreakdownBuilder
     ) {}
 
     public function handle(ServerRequestInterface $request): ResponseInterface {
@@ -32,10 +30,9 @@ final readonly class AccountBalanceRequestHandler implements RequestHandlerInter
         $transactions = $this->accountTransactionDao->getAccountTransactions($accountId);
 
         return new JsonResponse([
-            'holder'       => $this->customerViewPresenter->present($this->accountDao->getAccountOwner($accountId)),
-            'fund_totals'  => $this->fundSummaryBuilder->buildSummary($transactions),
-            'interest'     => $this->interestRateCalculator->calculateInterest($transactions),
-            'transactions' => $this->transactionsViewPresenter->present($transactions)
+            'holder'        => $this->customerViewPresenter->present($this->accountDao->getAccountOwner($accountId)),
+            'fund_balances' => $this->accountBalanceBreakdownBuilder->buildAccountBalanceBreakdown($transactions),
+            'transactions'  => $this->transactionsViewPresenter->present($transactions)
         ]);
     }
 }

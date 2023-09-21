@@ -16,15 +16,34 @@ final readonly class InterestRateCalculator {
     ) {}
 
     /**
+     * From an array of transactions for any number of funds, calculate the interest gained for each fund
+     *
      * @param AccountFundTransaction[] $transactions
+     * @return Money[]
      */
-    public function calculateInterest(array $transactions): Money {
-        if (sizeof($transactions) === 0) {
-            return Money::GBP(0);
+    public function calculateInterest(array $transactions): array {
+        $fundTransactions = [];
+
+        // Group transactions into each fund
+        foreach ($transactions as $transaction) {
+            $fundTransactions[$transaction->fund->value] ??= [];
+            $fundTransactions[$transaction->fund->value][] = $transaction;
         }
 
-        $fund = $transactions[0]->fund;
-        $periodStart = clone $transactions[0]->time;
+        $fundInterests = [];
+
+        foreach ($fundTransactions as $fundValue => $fundTransaction) {
+            $fundInterests[$fundValue] = $this->getInterestRateForFundTransactions(
+                Fund::from($fundValue),
+                $fundTransaction
+            );
+        }
+
+        return $fundInterests;
+    }
+
+    private function getInterestRateForFundTransactions(Fund $fund, array $fundTransactions): Money {
+        $periodStart = clone $fundTransactions[0]->time;
         $periodStart->setTime(0, 0, 0);
         $periodEnd = $this->clock->now();
         $periodEnd->setTime(0, 0, 0);
@@ -33,7 +52,7 @@ final readonly class InterestRateCalculator {
         $totalWithInterest = Money::GBP(0);
         $totalWithoutInterest = Money::GBP(0);
 
-        foreach ($transactions as $transaction) {
+        foreach ($fundTransactions as $transaction) {
             $totalWithInterest = $totalWithInterest->add($transaction->amount);
             $totalWithoutInterest = $totalWithoutInterest->add($transaction->amount);
             $totalWithInterest = $totalWithInterest->multiply($dailyInterestRates[$transaction->time->format('Y-m-d')]);

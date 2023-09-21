@@ -5,13 +5,13 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Psr\Container\ContainerInterface;
 use Psr\Clock\ClockInterface;
-use Cushon\RequestHandler\AccountBalanceRequestHandler;
+use Cushon\RequestHandler\AccountSummaryRequestHandler;
 
 return [
     App::class => function (ContainerInterface $container): App {
         AppFactory::setContainer($container);
         $app = AppFactory::create();
-        $app->get('/account-summary', AccountBalanceRequestHandler::class);
+        $app->get('/account-summary', AccountSummaryRequestHandler::class);
         return $app;
     },
 

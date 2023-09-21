@@ -14,15 +14,21 @@ final readonly class AccountSummaryCest {
                     'name' => 'John T',
                     'email' => 'johnt@example.com'
                 ],
-                'fund_totals' => [
+                'fund_balances' => [
                     'CUSHON_EQUITIES' => [
-                        'amount' => '25000',
-                        'currency' => 'GBP'
+                        'deposited' => [
+                            'amount' => '25000',
+                            'currency' => 'GBP'
+                        ],
+                        'interest' => [
+                            'amount' => '602',
+                            'currency' => 'GBP'
+                        ],
+                        'total' => [
+                            'amount' => '25602',
+                            'currency' => 'GBP'
+                        ]
                     ]
-                ],
-                'interest' => [
-                    'amount' => '602',
-                    'currency' => 'GBP'
                 ],
                 'transactions' => [
                     [
@@ -55,15 +61,21 @@ final readonly class AccountSummaryCest {
                     'name' => 'Jill P',
                     'email' => 'jillp@example.com'
                 ],
-                'fund_totals' => [
+                'fund_balances' => [
                     'CUSHON_EQUITIES' => [
-                        'amount' => '4000',
-                        'currency' => 'GBP'
+                        'deposited' => [
+                            'amount' => '4000',
+                            'currency' => 'GBP'
+                        ],
+                        'interest' => [
+                            'amount' => '80',
+                            'currency' => 'GBP'
+                        ],
+                        'total' => [
+                            'amount' => '4080',
+                            'currency' => 'GBP'
+                        ]
                     ]
-                ],
-                'interest' => [
-                    'amount' => '80',
-                    'currency' => 'GBP'
                 ],
                 'transactions' => [
                     [
