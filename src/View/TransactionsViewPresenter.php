@@ -1,7 +1,7 @@
 <?php
 namespace Cushon\View;
 
-use Cushon\AccountFundTransaction;
+use Cushon\Model\AccountFundTransaction;
 
 /**
  * Turns an array of AccountFundTransaction objects into a format that can be displayed to the user. Separates the

@@ -2,7 +2,7 @@
 namespace Unit;
 
 use Cushon\Dao\RowMapper\RetailCustomerRowMapper;
-use Cushon\RetailCustomer;
+use Cushon\Model\RetailCustomer;
 use PHPUnit\Framework\TestCase;
 
 final class RetailCustomerRowMapperTest extends TestCase {

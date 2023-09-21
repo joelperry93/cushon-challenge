@@ -1,7 +1,7 @@
 <?php
 namespace Cushon\Dao;
 
-use Cushon\Fund;
+use Cushon\Model\Fund;
 use Doctrine\DBAL\Connection;
 
 /**

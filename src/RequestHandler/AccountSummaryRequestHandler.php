@@ -1,9 +1,9 @@
 <?php
 namespace Cushon\RequestHandler;
 
-use Cushon\AccountBalanceBreakdownBuilder;
 use Cushon\Dao\AccountDao;
 use Cushon\Dao\AccountTransactionDao;
+use Cushon\Model\AccountBalanceBreakdownBuilder;
 use Cushon\View\RetailCustomerViewPresenter;
 use Cushon\View\TransactionsViewPresenter;
 use Laminas\Diactoros\Response\JsonResponse;

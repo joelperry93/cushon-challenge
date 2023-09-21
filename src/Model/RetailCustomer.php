@@ -1,5 +1,5 @@
 <?php
-namespace Cushon;
+namespace Cushon\Model;
 
 /**
  * A retail customer can set up a ISAs directly, similarly to employer and employee customers but retail customers

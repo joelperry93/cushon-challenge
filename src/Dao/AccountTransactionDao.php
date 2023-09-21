@@ -1,10 +1,9 @@
 <?php
 namespace Cushon\Dao;
 
-use Cushon\AccountFundTransaction;
 use Cushon\Dao\RowMapper\AccountFundTransactionRowMapper;
+use Cushon\Model\AccountFundTransaction;
 use Doctrine\DBAL\Connection;
-use Psr\Clock\ClockInterface;
 
 /**
  * Database operations relating to account transactions

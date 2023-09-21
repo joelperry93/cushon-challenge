@@ -1,7 +1,7 @@
 <?php
 namespace Cushon\View;
 
-use Cushon\RetailCustomer;
+use Cushon\Model\RetailCustomer;
 
 /**
  * Turns a retail customer object into a format that can be displayed to the user. It's important to separate the

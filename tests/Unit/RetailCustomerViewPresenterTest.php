@@ -1,7 +1,7 @@
 <?php
 namespace Unit;
 
-use Cushon\RetailCustomer;
+use Cushon\Model\RetailCustomer;
 use Cushon\View\RetailCustomerViewPresenter;
 use PHPUnit\Framework\TestCase;
 

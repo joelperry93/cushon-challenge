@@ -2,7 +2,7 @@
 namespace Cushon\Dao;
 
 use Cushon\Dao\RowMapper\RetailCustomerRowMapper;
-use Cushon\RetailCustomer;
+use Cushon\Model\RetailCustomer;
 use Doctrine\DBAL\Connection;
 
 /**

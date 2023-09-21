@@ -1,5 +1,5 @@
 <?php
-namespace Cushon;
+namespace Cushon\Model;
 
 use Cushon\Dao\InterestRateDao;
 use Money\Money;

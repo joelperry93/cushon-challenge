@@ -1,9 +1,9 @@
 <?php
 namespace Unit;
 
-use Cushon\AccountFundTransaction;
-use Cushon\Fund;
-use Cushon\FundDepositTotalCalculator;
+use Cushon\Model\AccountFundTransaction;
+use Cushon\Model\Fund;
+use Cushon\Model\FundDepositTotalCalculator;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 

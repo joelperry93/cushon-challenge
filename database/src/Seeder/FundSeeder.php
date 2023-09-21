@@ -1,7 +1,7 @@
 <?php
 namespace Cushon\Database\Seeder;
 
-use Cushon\Fund;
+use Cushon\Model\Fund;
 use Phinx\Seed\AbstractSeed;
 
 final class FundSeeder extends AbstractSeed {

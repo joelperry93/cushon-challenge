@@ -1,7 +1,6 @@
 <?php
 namespace Cushon\Database\Seeder;
 
-use Cushon\Fund;
 use Phinx\Seed\AbstractSeed;
 
 final class FundInterestRateSeeder extends AbstractSeed {

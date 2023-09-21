@@ -1,7 +1,7 @@
 <?php
 namespace Cushon\Dao\RowMapper;
 
-use Cushon\RetailCustomer;
+use Cushon\Model\RetailCustomer;
 
 /**
  * Transforms associative array DB rows into RetailCustomer objects

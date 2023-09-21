@@ -1,10 +1,10 @@
 <?php
 namespace Unit;
 
-use Cushon\AccountFundTransaction;
 use Cushon\Dao\InterestRateDao;
-use Cushon\Fund;
-use Cushon\InterestRateCalculator;
+use Cushon\Model\AccountFundTransaction;
+use Cushon\Model\Fund;
+use Cushon\Model\InterestRateCalculator;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 use Psr\Clock\ClockInterface;

@@ -1,9 +1,9 @@
 <?php
 namespace Unit;
 
-use Cushon\AccountFundTransaction;
 use Cushon\Dao\RowMapper\AccountFundTransactionRowMapper;
-use Cushon\Fund;
+use Cushon\Model\AccountFundTransaction;
+use Cushon\Model\Fund;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
